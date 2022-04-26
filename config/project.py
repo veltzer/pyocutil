@@ -22,7 +22,7 @@ project_keywords = [
     "openshift",
 ]
 project_license = "MIT"
-project_year_started = "2021"
+project_year_started = 2021
 project_description = project_short_description
 project_platforms = [
     "python3",
