@@ -39,7 +39,9 @@ setuptools.setup(
 % endif
     classifiers=${pydmt.helpers.python.array_indented(1, config.project.project_classifiers)},
     data_files=${pydmt.helpers.python.array_indented(1, config.project.project_data_files)},
+% if hasattr(config.python, "console_scripts"):
     entry_points={"console_scripts": ${pydmt.helpers.python.array_indented(1, config.python.console_scripts)}},
+% endif
 % if hasattr(config.python, "python_requires"):
     python_requires="${config.python.python_requires}",
 % endif
