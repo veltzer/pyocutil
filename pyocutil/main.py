@@ -2,8 +2,8 @@
 main file
 """
 
-import os  # for walk, getcwd, symlink, listdir, unlink, mkdir
-import os.path  # for join, expanduser, realpath, abspath, islink, isdir, isfile
+import os
+import os.path
 import subprocess
 import sys
 
