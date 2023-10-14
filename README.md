@@ -12,7 +12,7 @@ version: 0.0.1
 
 ## github
 
-![License](https://img.shields.io/github/license/veltzer/pytconf)
+![License](https://img.shields.io/github/license/veltzer/pyocutil)
 
 ## build
 
