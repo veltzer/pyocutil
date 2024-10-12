@@ -12,6 +12,6 @@ project website: https://veltzer.github.io/pyocutil
 
 author: Mark Veltzer
 
-version: 0.0.1
+version: 0.0.2
 
 	Mark Veltzer <mark.veltzer@gmail.com>, Copyright © 2021, 2022, 2023, 2024
