@@ -1,8 +1,8 @@
 """ python deps for this project """
 
-console_scripts: list[str] = [
-    "pyocutil=pyocutil.main:main",
-]
+scripts: dict[str,str] = {
+    "pyocutil": "pyocutil.main:main",
+}
 
 config_requires: list[str] = [
     "pyclassifiers",
