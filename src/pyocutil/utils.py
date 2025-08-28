@@ -9,7 +9,7 @@ from pyocutil.static import APP_NAME
 
 def ensure_dir(f):
     folder = os.path.dirname(f)
-    if folder != '' and not os.path.isdir(folder):
+    if folder != "" and not os.path.isdir(folder):
         os.makedirs(folder)
 
 
@@ -17,7 +17,7 @@ def touch(f):
     if os.path.isfile(f):
         os.utime(f, None)
     else:
-        with open(f, 'w'):
+        with open(f, "w"):
             pass
 
 

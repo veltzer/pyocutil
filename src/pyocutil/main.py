@@ -58,7 +58,7 @@ def remove_folders() -> None:
     for filename in get_free_args():
         r = os.sep.join(filename.split(os.sep)[1:])
         result.append(r)
-    print(' '.join(result), end='')
+    print(" ".join(result), end="")
 
 
 @register_endpoint(
@@ -92,8 +92,8 @@ def only_print_on_error() -> None:
         (out_out, out_err) = pr.communicate()
         status = pr.returncode
         if status:
-            print(out_out.decode(), end='')
-            print(out_err.decode(), end='')
+            print(out_out.decode(), end="")
+            print(out_err.decode(), end="")
             sys.exit(status)
 
 
@@ -112,8 +112,8 @@ def error_on_output() -> None:
         (out_out, out_err) = pr.communicate()
         _ = pr.returncode
     if len(out_out) > 0 or len(out_err) > 0:
-        print(out_out.decode(), end='')
-        print(out_err.decode(), end='')
+        print(out_out.decode(), end="")
+        print(out_err.decode(), end="")
         sys.exit(1)
     else:
         sys.exit(0)
@@ -144,11 +144,11 @@ def wrapper_css_validator() -> None:
     out = subprocess.check_output(args).decode()
     do_print = False
     error = False
-    for line in out.split('\n'):
-        if line.startswith('Sorry'):
+    for line in out.split("\n"):
+        if line.startswith("Sorry"):
             do_print = True
             error = True
-        if line.startswith('Valid'):
+        if line.startswith("Valid"):
             do_print = False
         if do_print:
             print(line)
@@ -166,5 +166,5 @@ def main():
     config_arg_parse_and_launch()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
