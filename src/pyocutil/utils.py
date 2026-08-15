@@ -47,9 +47,8 @@ def debug(msg):
 
 def do_install(source, target, force: bool, doit: bool):
     """install a single item"""
-    if force:
-        if os.path.islink(target):
-            os.unlink(target)
+    if force and os.path.islink(target):
+        os.unlink(target)
     if doit:
         debug(f"symlinking [{source}], [{target}]")
         os.symlink(source, target)

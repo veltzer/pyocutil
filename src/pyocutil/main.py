@@ -8,12 +8,11 @@ import subprocess
 import sys
 
 import pylogconf.core
-from pytconf import register_endpoint, get_free_args, config_arg_parse_and_launch, \
-    register_main
+from pytconf import config_arg_parse_and_launch, get_free_args, register_endpoint, register_main
 
 from pyocutil.configs import ConfigSymlinkInstall, ConfigVerbose
-from pyocutil.static import DESCRIPTION, APP_NAME, VERSION_STR
-from pyocutil.utils import touch_mkdir_many, no_err_run, debug, do_install, file_gen
+from pyocutil.static import APP_NAME, DESCRIPTION, VERSION_STR
+from pyocutil.utils import debug, do_install, file_gen, no_err_run, touch_mkdir_many
 
 
 @register_endpoint(
@@ -31,10 +30,9 @@ def symlink_install() -> None:
             full = os.path.join(ConfigSymlinkInstall.target_folder, file)
             if os.path.islink(full):
                 link_target = os.path.realpath(full)
-                if link_target.startswith(cwd):
-                    if ConfigSymlinkInstall.doit:
-                        debug(f"unlinking [{full}]")
-                        os.unlink(full)
+                if link_target.startswith(cwd) and ConfigSymlinkInstall.doit:
+                    debug(f"unlinking [{full}]")
+                    os.unlink(full)
     else:
         os.mkdir(ConfigSymlinkInstall.target_folder)
     # now create the new links
