@@ -4,3 +4,4 @@ KEYWORDS = {
     "oc",
     "openshift",
 }
+PYPI = true
