@@ -5,7 +5,7 @@
 
 description: utilities for openshift
 
-project website: https://veltzer.github.io/pyocutil
+project website: <https://veltzer.github.io/pyocutil>
 
 author: Mark Veltzer
 
