@@ -45,7 +45,7 @@ def debug(msg):
     logger.debug(msg)
 
 
-def do_install(source, target, force: bool, doit: bool):
+def do_install(source, target, *, force: bool, doit: bool):
     """install a single item"""
     if force and os.path.islink(target):
         os.unlink(target)
@@ -54,7 +54,7 @@ def do_install(source, target, force: bool, doit: bool):
         os.symlink(source, target)
 
 
-def file_gen(root_folder: str, recurse: bool):
+def file_gen(root_folder: str, *, recurse: bool):
     """generate all files in a folder"""
     if recurse:
         for root, directories, files in os.walk(root_folder):

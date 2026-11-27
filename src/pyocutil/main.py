@@ -36,15 +36,15 @@ def symlink_install() -> None:
     else:
         os.mkdir(ConfigSymlinkInstall.target_folder)
     # now create the new links
-    for root, directories, files in file_gen(ConfigSymlinkInstall.source_folder, ConfigSymlinkInstall.recurse):
+    for root, directories, files in file_gen(ConfigSymlinkInstall.source_folder, recurse=ConfigSymlinkInstall.recurse):
         for file in files:
             source = os.path.abspath(os.path.join(root, file))
             target = os.path.join(ConfigSymlinkInstall.target_folder, file)
-            do_install(source, target, ConfigSymlinkInstall.force, ConfigSymlinkInstall.doit)
+            do_install(source, target, force=ConfigSymlinkInstall.force, doit=ConfigSymlinkInstall.doit)
         for directory in directories:
             source = os.path.abspath(os.path.join(root, directory))
             target = os.path.join(ConfigSymlinkInstall.target_folder, directory)
-            do_install(source, target, ConfigSymlinkInstall.force, ConfigSymlinkInstall.doit)
+            do_install(source, target, force=ConfigSymlinkInstall.force, doit=ConfigSymlinkInstall.doit)
 
 
 @register_endpoint(
