@@ -159,7 +159,7 @@ def wrapper_css_validator() -> None:
     app_name=APP_NAME,
     version=VERSION_STR,
 )
-def main():
+def main() -> None:
     pylogconf.core.setup()
     config_arg_parse_and_launch()
 

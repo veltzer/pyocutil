@@ -8,7 +8,7 @@ from pyocutil import utils
 
 
 class EnsureDirTests(unittest.TestCase):
-    def test_creates_missing_parent(self):
+    def test_creates_missing_parent(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             target = os.path.join(d, "a", "b", "file.txt")
             utils.ensure_dir(target)
@@ -16,19 +16,19 @@ class EnsureDirTests(unittest.TestCase):
 
 
 class TouchTests(unittest.TestCase):
-    def test_creates_new_file(self):
+    def test_creates_new_file(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             target = os.path.join(d, "new.txt")
             utils.touch(target)
             assert os.path.isfile(target)
 
-    def test_touch_mkdir_creates_dirs_and_file(self):
+    def test_touch_mkdir_creates_dirs_and_file(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             target = os.path.join(d, "x", "y", "z.txt")
             utils.touch_mkdir(target)
             assert os.path.isfile(target)
 
-    def test_touch_mkdir_many(self):
+    def test_touch_mkdir_many(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             names = [os.path.join(d, f"s{i}", f"f{i}.txt") for i in range(3)]
             utils.touch_mkdir_many(names)
@@ -36,7 +36,7 @@ class TouchTests(unittest.TestCase):
 
 
 class DoInstallTests(unittest.TestCase):
-    def test_creates_symlink_when_doit(self):
+    def test_creates_symlink_when_doit(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             source = os.path.join(d, "source.txt")
             target = os.path.join(d, "link.txt")
@@ -46,14 +46,14 @@ class DoInstallTests(unittest.TestCase):
             assert os.path.islink(target)
             assert os.readlink(target) == source
 
-    def test_no_symlink_when_not_doit(self):
+    def test_no_symlink_when_not_doit(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             source = os.path.join(d, "source.txt")
             target = os.path.join(d, "link.txt")
             utils.do_install(source, target, force=False, doit=False)
             assert not os.path.lexists(target)
 
-    def test_force_replaces_existing_link(self):
+    def test_force_replaces_existing_link(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             first = os.path.join(d, "first.txt")
             second = os.path.join(d, "second.txt")
@@ -64,7 +64,7 @@ class DoInstallTests(unittest.TestCase):
 
 
 class FileGenTests(unittest.TestCase):
-    def test_non_recursive_lists_only_top_level(self):
+    def test_non_recursive_lists_only_top_level(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             with open(os.path.join(d, "top.txt"), "w", encoding="utf-8"):
                 pass
@@ -78,7 +78,7 @@ class FileGenTests(unittest.TestCase):
             assert directories == ["subdir"]
             assert files == ["top.txt"]
 
-    def test_recursive_walks_subdirectories(self):
+    def test_recursive_walks_subdirectories(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             os.mkdir(os.path.join(d, "subdir"))
             with open(os.path.join(d, "subdir", "deep.txt"), "w", encoding="utf-8"):

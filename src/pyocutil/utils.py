@@ -3,17 +3,18 @@
 import logging
 import os
 import subprocess
+from logging import Logger
 
 from pyocutil.static import APP_NAME
 
 
-def ensure_dir(f):
+def ensure_dir(f: str) -> None:
     folder = os.path.dirname(f)
     if folder != "" and not os.path.isdir(folder):
         os.makedirs(folder)
 
 
-def touch(f):
+def touch(f: str) -> None:
     if os.path.isfile(f):
         os.utime(f, None)
     else:
@@ -21,31 +22,31 @@ def touch(f):
             pass
 
 
-def touch_mkdir(f):
+def touch_mkdir(f: str) -> None:
     ensure_dir(f)
     touch(f)
 
 
-def touch_mkdir_many(filenames):
+def touch_mkdir_many(filenames: list[str]) -> None:
     for filename in filenames:
         touch_mkdir(filename)
 
 
-def no_err_run(args):
+def no_err_run(args: list[str]) -> None:
     subprocess.call(args)
 
 
-def get_logger():
+def get_logger() -> Logger:
     return logging.getLogger(APP_NAME)
 
 
-def debug(msg):
+def debug(msg: str) -> None:
     """debug function for the symlink install operation"""
     logger = get_logger()
     logger.debug(msg)
 
 
-def do_install(source, target, *, force: bool, doit: bool):
+def do_install(source: str, target: str, *, force: bool, doit: bool) -> None:
     """install a single item"""
     if force and os.path.islink(target):
         os.unlink(target)
